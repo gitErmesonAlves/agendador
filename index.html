@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <title>Agendador</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta
+        name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Imports Location -->
+        <link rel="stylesheet" href="./src/sass/index.css">
+        <script src="./src/js/index.js"></script>
+        <script src="./src/js/data-hora.js"></script>
+
+        <!-- Bootstrap CDN Imports -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+        <!-- Font-Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="./src/assets/logo.png" type="image/x-icon">
+
+    </head>
+    <body class="text-center" onload="carregaListaDespesas()">
+
+        <main class="form-signin">
+            <form>
+                <div class="alert alert_modal" role="alert" id="modal_titulo_div">
+                    <span id="modal_titulo"></span>
+                    <span class="p-2" id="alert_icon"></span>
+                </div>
+
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="name@example.com">
+                    <label for="nome">nome</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="valor" name="valor" placeholder="valor">
+                    <label for="valor">valor</label>
+                </div>
+                <small class="text-muted">Coloque os valores cheio, "Sem Ponto ou Virgula"</small>
+
+                <div class="form-floating">
+                    <input type="date" class="form-control" id="data" name="data">
+                </div>
+                <button class="w-100 btn btn-lg btn-login" type="button" id="login" name="login" onclick="cadastrarDespesa();">Incluir</button>
+            </form>
+
+            <table class="table table-hover" id="tab">
+                <thead>
+                    <tr>
+                        <th scope="row">Nome</th>
+                        <th scope="row">Valor</th>
+                        <th scope="row">Data</th>
+                        <th scope="row"></th>
+                    </tr>
+                </thead>
+                <tbody id="listaDespesas"></tbody>
+            </table>
+
+            <small class="text-muted" id="data-hora"></small>
+            <p class="mt-2 text-muted">&copy; 2021 Desenvolvido por
+                <a href="https://instagram.com/_ermesonalves_">Ermeson Alves</a>
+            </p>
+        </main>
+
+
+    </body>
+</html>
