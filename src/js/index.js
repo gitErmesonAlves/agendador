@@ -173,20 +173,21 @@ function carregaListaDespesas(despesas = Array(), filtro = false) {
 				mostradespesa();
 				window.location.reload()
 			}
-			linha.insertCell(5).append(btnEdtion)
 		}
+		linha.insertCell(5).append(btnEdtion);
+		
 
-		let btn = document.createElement('button')
-		btn.className = 'btn btn-success'
-		btn.innerHTML = '<i class="fa fa-times"></i>'
-		btn.id = `id_despesa_${d.id}`
-		btn.onclick = function () {
-			let id = this.id.replace('id_despesa_', '')
-			//alert(id)
-			bd.remover(id)
-			window.location.reload()
-		}
-		linha.insertCell(6).append(btn)
+		// let btn = document.createElement('button')
+		// btn.className = 'btn btn-success'
+		// btn.innerHTML = '<i class="fa fa-times"></i>'
+		// btn.id = `id_despesa_${d.id}`
+		// btn.onclick = function () {
+		// 	let id = this.id.replace('id_despesa_', '')
+		// 	//alert(id)
+		// 	bd.remover(id)
+		// 	window.location.reload()
+		// }
+		// linha.insertCell(6).append(btn)
 
 	})
 }
