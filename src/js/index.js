@@ -159,7 +159,7 @@ function carregaListaDespesas(despesas = Array(), filtro = false) {
 
 				let produtoEncontrado;
 
-				for (let i = 0; i < despesas.length; i++) {
+				for (let i = 0; i < despesas; i++) {
 					if (despesas[i].nome == nome) {
 						produtoEncontrado = despesas[i];
 
