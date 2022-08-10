@@ -1,8 +1,10 @@
 
 class Despesa {
 	
-	constructor(nome, valor, data) {
+	constructor(nome, descri, qtd, valor, data) {
 		this.nome = nome
+		this.descri = descri
+		this.qtd = qtd
 		this.valor = valor
         this.data = data
 	}
@@ -73,11 +75,15 @@ let bd = new Bd()
 function cadastrarDespesa() {
 
 	let nome = document.getElementById('nome')
+	let descri = document.getElementById('descri')
+	let qtd = document.getElementById('qtd')
 	let valor = document.getElementById('valor')
     let data = document.getElementById('data')
 
 	let despesa = new Despesa(
 		nome.value,
+		descri.value,
+		qtd.value,
 		valor.value,
         data.value
 		)
@@ -95,6 +101,8 @@ function cadastrarDespesa() {
 		//log de sucesso
 		$('#exampleModal').modal('show')
 		nome.value = ''
+		descri.value = ''
+		qtd.value = ''
 		valor.value = ''
         data.value = ''
 
@@ -130,8 +138,10 @@ function carregaListaDespesas(despesas = Array(), filtro = false) {
 
 		//Criando as colunas (td)
 		linha.insertCell(0).innerHTML = d.nome
-		linha.insertCell(1).innerHTML = `${real} ${d.valor},00`
-        linha.insertCell(2).innerHTML = d.data
+		linha.insertCell(1).innerHTML = d.descri
+		linha.insertCell(2).innerHTML = d.qtd
+		linha.insertCell(3).innerHTML = `${real} ${d.valor},00`
+        linha.insertCell(4).innerHTML = d.data
 
 		//Criar o botão de exclusão
 		let btn = document.createElement('button')
@@ -144,7 +154,7 @@ function carregaListaDespesas(despesas = Array(), filtro = false) {
 			bd.remover(id)
 			window.location.reload()
 		}
-		linha.insertCell(3).append(btn)
+		linha.insertCell(5).append(btn)
 
 	})
 }
