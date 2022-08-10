@@ -155,7 +155,7 @@ function carregaListaDespesas(despesas = Array(), filtro = false) {
 
 			if (confirm('Deseja editar o produto? ')) {
 
-				despesas = JSON.parse(localStorage.getItem(i));
+				despesas = JSON.parse(localStorage.getItem(d));
 
 				let produtoEncontrado;
 
@@ -175,7 +175,7 @@ function carregaListaDespesas(despesas = Array(), filtro = false) {
 			}
 		}
 		linha.insertCell(5).append(btnEdtion);
-		
+
 
 		// let btn = document.createElement('button')
 		// btn.className = 'btn btn-success'
