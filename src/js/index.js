@@ -1,12 +1,12 @@
 
 class Despesa {
-	
+
 	constructor(nome, descri, qtd, valor, data) {
 		this.nome = nome
 		this.descri = descri
 		this.qtd = qtd
 		this.valor = valor
-        this.data = data
+		this.data = data
 	}
 
 	validarDados() {
@@ -34,7 +34,7 @@ class Bd {
 		return parseInt(proximoId) + 1
 	}
 
-	gravar(d) {
+	gralet(d) {
 		let id = this.getProximoId()
 
 		localStorage.setItem(id, JSON.stringify(d))
@@ -53,7 +53,7 @@ class Bd {
 
 			//recuperar a despesa
 			let despesa = JSON.parse(localStorage.getItem(i))
-			
+
 			if (despesa === null) {
 				continue
 			}
@@ -78,20 +78,20 @@ function cadastrarDespesa() {
 	let descri = document.getElementById('descri')
 	let qtd = document.getElementById('qtd')
 	let valor = document.getElementById('valor')
-    let data = document.getElementById('data')
+	let data = document.getElementById('data')
 
 	let despesa = new Despesa(
 		nome.value,
 		descri.value,
 		qtd.value,
 		valor.value,
-        data.value
-		)
+		data.value
+	)
 
-        window.location.reload()
+	window.location.reload()
 
 	if (despesa.validarDados()) {
-		bd.gravar(despesa)
+		bd.gralet(despesa)
 
 		document.getElementById('modal_titulo').innerHTML = 'Registro inserido !'
 		document.getElementById('modal_titulo_div').className = 'alert_modal alert-success'
@@ -104,7 +104,7 @@ function cadastrarDespesa() {
 		descri.value = ''
 		qtd.value = ''
 		valor.value = ''
-        data.value = ''
+		data.value = ''
 
 		window.location.reload()
 
@@ -132,21 +132,53 @@ function carregaListaDespesas(despesas = Array(), filtro = false) {
 	despesas.forEach(function (d) {
 
 		//Criando a linha (tr)
-		var linha = listaDespesas.insertRow();
+		let linha = listaDespesas.insertRow();
 
-        let real = 'R$'
+		let real = 'R$'
 
 		//Criando as colunas (td)
 		linha.insertCell(0).innerHTML = d.nome
 		linha.insertCell(1).innerHTML = d.descri
 		linha.insertCell(2).innerHTML = d.qtd
 		linha.insertCell(3).innerHTML = `${real} ${d.valor},00`
-        linha.insertCell(4).innerHTML = d.data
+		linha.insertCell(4).innerHTML = d.data
+
+
 
 		//Criar o botão de exclusão
+		let btnEdtion = document.createElement('button')
+
+		btnEdtion.className = 'btn btn-warning'
+		btnEdtion.innerHTML = '<i class="fa fa-pencil"></i>'
+		btnEdtion.id = `ìd_despesa_${d.id}`
+		btn.onclick = function atualizarContato(d) {
+
+			if (confirm('Deseja editar o produto? ')) {
+
+				despesa = JSON.parse(localStorage.getItem(i));
+
+				let produtoEncontrado;
+
+				for (let i = 0; i < despesa.length; i++) {
+					if (despesa[i].nome == nome) {
+						produtoEncontrado = despesa[i];
+
+						document.getElementById('nome').value = produtoEncontrado.nome;
+						document.getElementById('descri').value = produtoEncontrado.descri;
+						document.getElementById('qtd').value = produtoEncontrado.qtd;
+						document.getElementById('valor').value = produtoEncontrado.valor;
+						document.getElementById('data').value = produtoEncontrado.data;
+					}
+				}
+				mostradespesa();
+				window.location.reload()
+			}
+			linha.insertCell(5).append(btnEdtion)
+		}
+
 		let btn = document.createElement('button')
-		btn.className = 'btn btn-danger'
-		btn.innerHTML = '<i class="fa fa-times"  ></i>'
+		btn.className = 'btn btn-success'
+		btn.innerHTML = '<i class="fa fa-times"></i>'
 		btn.id = `id_despesa_${d.id}`
 		btn.onclick = function () {
 			let id = this.id.replace('id_despesa_', '')
@@ -154,7 +186,7 @@ function carregaListaDespesas(despesas = Array(), filtro = false) {
 			bd.remover(id)
 			window.location.reload()
 		}
-		linha.insertCell(5).append(btn)
+		linha.insertCell(6).append(btn)
 
 	})
 }
