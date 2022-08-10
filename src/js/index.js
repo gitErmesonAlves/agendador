@@ -163,11 +163,11 @@ function carregaListaDespesas(despesas = Array(), filtro = false) {
 					if (despesas[i].nome == nome) {
 						produtoEncontrado = despesas[i];
 
-						nome = document.getElementById('nome').value = produtoEncontrado.nome;
-						descri = document.getElementById('descri').value = produtoEncontrado.descri;
-						qtd = document.getElementById('qtd').value = produtoEncontrado.qtd;
-						valor = document.getElementById('valor').value = produtoEncontrado.valor;
-						data = document.getElementById('data').value = produtoEncontrado.data;
+						document.getElementById('nome').value = produtoEncontrado.nome;
+						document.getElementById('descri').value = produtoEncontrado.descri;
+						document.getElementById('qtd').value = produtoEncontrado.qtd;
+						document.getElementById('valor').value = produtoEncontrado.valor;
+						document.getElementById('data').value = produtoEncontrado.data;
 					}
 				}
 				carregaListaDespesas();
