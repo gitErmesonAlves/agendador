@@ -151,7 +151,7 @@ function carregaListaDespesas(despesas = Array(), filtro = false) {
 		btnEdtion.className = 'btn btn-warning'
 		btnEdtion.innerHTML = '<i class="fa fa-pencil"></i>'
 		btnEdtion.id = `ìd_despesa_${d.id}`
-		btn.onclick = function atualizarContato(nome, descri, qtd, valor, data) {
+		btnEdtion.onclick = function atualizarContato(nome, descri, qtd, valor, data) {
 
 			if (confirm('Deseja editar o produto? ')) {
 
