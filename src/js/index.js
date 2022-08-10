@@ -170,7 +170,7 @@ function carregaListaDespesas(despesas = Array(), filtro = false) {
 						data = document.getElementById('data').value = produtoEncontrado.data;
 					}
 				}
-				mostradespesa();
+				carregaListaDespesas();
 				window.location.reload()
 			}
 		}
