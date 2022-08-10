@@ -151,23 +151,23 @@ function carregaListaDespesas(despesas = Array(), filtro = false) {
 		btnEdtion.className = 'btn btn-warning'
 		btnEdtion.innerHTML = '<i class="fa fa-pencil"></i>'
 		btnEdtion.id = `ìd_despesa_${d.id}`
-		btn.onclick = function atualizarContato(d) {
+		btn.onclick = function atualizarContato(nome, descri, qtd, valor, data) {
 
 			if (confirm('Deseja editar o produto? ')) {
 
-				despesa = JSON.parse(localStorage.getItem(i));
+				despesas = JSON.parse(localStorage.getItem(i));
 
 				let produtoEncontrado;
 
-				for (let i = 0; i < despesa.length; i++) {
-					if (despesa[i].nome == nome) {
-						produtoEncontrado = despesa[i];
+				for (let i = 0; i < despesas.length; i++) {
+					if (despesas[i].nome == nome) {
+						produtoEncontrado = despesas[i];
 
-						document.getElementById('nome').value = produtoEncontrado.nome;
-						document.getElementById('descri').value = produtoEncontrado.descri;
-						document.getElementById('qtd').value = produtoEncontrado.qtd;
-						document.getElementById('valor').value = produtoEncontrado.valor;
-						document.getElementById('data').value = produtoEncontrado.data;
+						nome = document.getElementById('nome').value = produtoEncontrado.nome;
+						descri = document.getElementById('descri').value = produtoEncontrado.descri;
+						qtd = document.getElementById('qtd').value = produtoEncontrado.qtd;
+						valor = document.getElementById('valor').value = produtoEncontrado.valor;
+						data = document.getElementById('data').value = produtoEncontrado.data;
 					}
 				}
 				mostradespesa();
